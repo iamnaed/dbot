@@ -118,7 +118,7 @@
         <parent link="base_link"/>
         <child link="j0_link"/>
         <axis xyz="0 0 1"/>
-        <limit lower="${-pi}" upper="${pi}" velocity="100" effort="100"/>
+        <limit lower="${-pi}" upper="${pi}" velocity="100.0" effort="100.0"/>
     </joint>
 
     <!-- The j0 link of the robot -->
@@ -144,7 +144,7 @@
         <parent link="j0_link"/>
         <child link="j1_link"/>
         <axis xyz="0 0 1"/>
-        <limit lower="${-pi}" upper="${pi}" velocity="100" effort="100"/>
+        <limit lower="${-pi}" upper="${pi}" velocity="100.0" effort="100.0"/>
     </joint>
 
     <!-- The j1 link of the robot -->
@@ -183,7 +183,7 @@
         <parent link="j1_link"/>
         <child link="j2_link"/>
         <axis xyz="0 0 1"/>
-        <limit lower="${-pi}" upper="${pi}" velocity="100" effort="100"/>
+        <limit lower="${-pi}" upper="${pi}" velocity="100.0" effort="100.0"/>
     </joint>
 
     <!-- The j2 link of the robot -->
@@ -222,7 +222,7 @@
         <parent link="j2_link"/>
         <child link="j3_link"/>
         <axis xyz="0 0 1"/>
-        <limit lower="${-pi}" upper="${pi}" velocity="100" effort="100"/>
+        <limit lower="${-pi}" upper="${pi}" velocity="100.0" effort="100.0"/>
     </joint>
 
     <!-- The j3 link of the robot -->
@@ -248,7 +248,7 @@
         <parent link="j3_link"/>
         <child link="j4_link"/>
         <axis xyz="0 0 1"/>
-        <limit lower="${-pi}" upper="${pi}" velocity="100" effort="100"/>
+        <limit lower="${-pi}" upper="${pi}" velocity="100.0" effort="100.0"/>
     </joint>
 
     <!-- The j4 link of the robot -->
@@ -274,7 +274,7 @@
         <parent link="j4_link"/>
         <child link="j5_link"/>
         <axis xyz="0 0 1"/>
-        <limit lower="${-2*pi}" upper="${2*pi}" velocity="100" effort="100"/>
+        <limit lower="${-2*pi}" upper="${2*pi}" velocity="100.0" effort="100.0"/>
     </joint>
 
     <!-- The j5 link of the robot -->
