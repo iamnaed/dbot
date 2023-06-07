@@ -94,6 +94,10 @@
     <xacro:property name="flange_xyz" value="0.0 0.0 ${-flange_l/2}" />
     <xacro:property name="flange_rpy" value="0.0 0.0 0.0" />
 
+    <xacro:property name="damping" value="10.0" />
+    <xacro:property name="friction" value="10.0" />
+
+
     <!-- The first link of the robot -->
     <!-- Fixed base-->
     <link name="base_link">
@@ -110,6 +114,9 @@
                 <cylinder length="${base_l}" radius="${base_r}"/>
             </geometry>
         </collision>
+        <xacro:inertial_cylinder mass="1.0" length="${base_l}" radius="${base_r}">
+            <origin xyz="${base_xyz}" rpy="${base_rpy}"/>
+        </xacro:inertial_cylinder>
     </link>
 
     <!-- Base to j0 -->
@@ -118,7 +125,8 @@
         <parent link="base_link"/>
         <child link="j0_link"/>
         <axis xyz="0 0 1"/>
-        <limit lower="${-pi}" upper="${pi}" velocity="100.0" effort="100.0"/>
+        <limit lower="${-pi}" upper="${pi}" velocity="100" effort="100"/>
+        <dynamics damping="${damping}" friction="${friction}" />
     </joint>
 
     <!-- The j0 link of the robot -->
@@ -136,6 +144,9 @@
                 <cylinder length="${j0_l}" radius="${j0_r}"/>
             </geometry>
         </collision>
+        <xacro:inertial_cylinder mass="1.0" length="${j0_l}" radius="${j0_r}">
+            <origin xyz="${j0_xyz}" rpy="${j0_rpy}"/>
+        </xacro:inertial_cylinder>
     </link>
 
     <!-- j0 to j1 Joint -->
@@ -144,7 +155,8 @@
         <parent link="j0_link"/>
         <child link="j1_link"/>
         <axis xyz="0 0 1"/>
-        <limit lower="${-pi}" upper="${pi}" velocity="100.0" effort="100.0"/>
+        <limit lower="${-pi}" upper="${pi}" velocity="100" effort="100"/>
+        <dynamics damping="${damping}" friction="${friction}" />
     </joint>
 
     <!-- The j1 link of the robot -->
@@ -162,6 +174,9 @@
                 <cylinder length="${j1_l}" radius="${j1_r}"/>
             </geometry>
         </collision>
+        <xacro:inertial_cylinder mass="1.0" length="${j1_l}" radius="${j1_r}">
+            <origin xyz="${j1_xyz}" rpy="${j1_rpy}"/>
+        </xacro:inertial_cylinder>
         <visual>
             <origin xyz="${j1_link_xyz}" rpy="${j1_link_rpy}"/>
             <geometry>
@@ -175,6 +190,9 @@
                 <cylinder length="${j1_link_l}" radius="${j1_link_r}"/>
             </geometry>
         </collision>
+        <xacro:inertial_cylinder mass="1.0" length="${j1_link_l}" radius="${j1_link_r}">
+            <origin xyz="${j1_link_xyz}" rpy="${j1_link_rpy}"/>
+        </xacro:inertial_cylinder>
     </link>
 
     <!-- j1 to j2 Joint -->
@@ -183,7 +201,8 @@
         <parent link="j1_link"/>
         <child link="j2_link"/>
         <axis xyz="0 0 1"/>
-        <limit lower="${-pi}" upper="${pi}" velocity="100.0" effort="100.0"/>
+        <limit lower="${-pi}" upper="${pi}" velocity="100" effort="100"/>
+        <dynamics damping="${damping}" friction="${friction}" />
     </joint>
 
     <!-- The j2 link of the robot -->
@@ -201,6 +220,9 @@
                 <cylinder length="${j2_l}" radius="${j2_r}"/>
             </geometry>
         </collision>
+        <xacro:inertial_cylinder mass="1.0" length="${j2_l}" radius="${j2_r}">
+            <origin xyz="${j2_xyz}" rpy="${j2_rpy}"/>
+        </xacro:inertial_cylinder>
         <visual>
             <origin xyz="${j2_link_xyz}" rpy="${j2_link_rpy}"/>
             <geometry>
@@ -214,6 +236,9 @@
                 <cylinder length="${j2_link_l}" radius="${j2_link_r}"/>
             </geometry>
         </collision>
+        <xacro:inertial_cylinder mass="1.0" length="${j2_link_l}" radius="${j2_link_r}">
+            <origin xyz="${j2_link_xyz}" rpy="${j2_link_rpy}"/>
+        </xacro:inertial_cylinder>
     </link>
     
     <!-- j2 to j3 Joint -->
@@ -222,7 +247,8 @@
         <parent link="j2_link"/>
         <child link="j3_link"/>
         <axis xyz="0 0 1"/>
-        <limit lower="${-pi}" upper="${pi}" velocity="100.0" effort="100.0"/>
+        <limit lower="${-pi}" upper="${pi}" velocity="100" effort="100"/>
+        <dynamics damping="${damping}" friction="${friction}" />
     </joint>
 
     <!-- The j3 link of the robot -->
@@ -240,6 +266,9 @@
                 <cylinder length="${j3_l}" radius="${j3_r}"/>
             </geometry>
         </collision>
+        <xacro:inertial_cylinder mass="1.0" length="${j3_l}" radius="${j3_r}">
+            <origin xyz="${j3_xyz}" rpy="${j3_rpy}"/>
+        </xacro:inertial_cylinder>
     </link>
 
     <!-- j3 to j4 Joint -->
@@ -248,7 +277,8 @@
         <parent link="j3_link"/>
         <child link="j4_link"/>
         <axis xyz="0 0 1"/>
-        <limit lower="${-pi}" upper="${pi}" velocity="100.0" effort="100.0"/>
+        <limit lower="${-pi}" upper="${pi}" velocity="100" effort="100"/>
+        <dynamics damping="${damping}" friction="${friction}" />
     </joint>
 
     <!-- The j4 link of the robot -->
@@ -266,6 +296,9 @@
                 <cylinder length="${j4_l}" radius="${j4_r}"/>
             </geometry>
         </collision>
+        <xacro:inertial_cylinder mass="1.0" length="${j4_l}" radius="${j4_r}">
+            <origin xyz="${j4_xyz}" rpy="${j4_rpy}"/>
+        </xacro:inertial_cylinder>
     </link>
 
     <!-- j4 to j5 Joint -->
@@ -274,7 +307,8 @@
         <parent link="j4_link"/>
         <child link="j5_link"/>
         <axis xyz="0 0 1"/>
-        <limit lower="${-2*pi}" upper="${2*pi}" velocity="100.0" effort="100.0"/>
+        <limit lower="${-2*pi}" upper="${2*pi}" velocity="100" effort="100"/>
+        <dynamics damping="${damping}" friction="${friction}" />
     </joint>
 
     <!-- The j5 link of the robot -->
@@ -292,6 +326,9 @@
                 <cylinder length="${j5_l}" radius="${j5_r}"/>
             </geometry>
         </collision>
+        <xacro:inertial_cylinder mass="1.0" length="${j5_l}" radius="${j5_r}">
+            <origin xyz="${j5_xyz}" rpy="${j5_rpy}"/>
+        </xacro:inertial_cylinder>
     </link>
 
     <!-- j5 to flange Joint -->
@@ -299,9 +336,10 @@
         <origin xyz="${j5_flange_xyz}" rpy="${j5_flange_rpy}"/>
         <parent link="j5_link"/>
         <child link="flange_link"/>
+        <dynamics damping="${damping}" friction="${friction}" />
     </joint>
 
-    <!-- The T link of the robot -->
+    <!-- The Flange link of the robot -->
     <link name="flange_link">
         <visual>
             <origin xyz="${flange_xyz}" rpy="${flange_rpy}"/>
@@ -316,5 +354,8 @@
                 <cylinder length="${flange_l}" radius="${flange_r}"/>
             </geometry>
         </collision>
+        <xacro:inertial_cylinder mass="1.0" length="${flange_l}" radius="${flange_r}">
+            <origin xyz="${flange_xyz}" rpy="${flange_rpy}"/>
+        </xacro:inertial_cylinder>
     </link>
 </robot>
