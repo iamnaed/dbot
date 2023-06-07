@@ -3,12 +3,11 @@
     
     <!-- World Frame-->
     <!-- Fixed base-->
-    <link name="world">
-    </link>
+    <link name="world"/>
 
     <!-- - The upper limit uses xacro's mathematical features -->
-    <joint name="arm_joint" type="fixed">
-        <origin xyz="0.0 0 0.0" rpy="0 0 0"/>
+    <joint name="world_base_joint" type="fixed">
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
         <parent link="world"/>
         <child link="base_link"/>
     </joint>
