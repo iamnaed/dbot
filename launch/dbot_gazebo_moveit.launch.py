@@ -72,6 +72,15 @@ def generate_launch_description():
     ld.add_action(gazebo)
     ld.add_action(spawn_entity)
 
+    # MoveGroup
+    ld.add_action(
+        IncludeLaunchDescription(
+            PythonLaunchDescriptionSource(
+                str(moveit_config.package_path / "launch/move_group.launch.py")
+            ),
+        )
+    )
+
     # Ros 2 Control
     ld.add_action(
         Node(

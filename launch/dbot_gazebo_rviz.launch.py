@@ -66,11 +66,24 @@ def generate_launch_description():
                     get_package_share_directory('gazebo_ros'), 'launch', 'gazebo.launch.py')]),
              )
     spawn_entity = Node(package='gazebo_ros', executable='spawn_entity.py',
-                        arguments=['-topic', 'robot_description',
-                                   '-entity', 'dbot_gz'],
-                        output='screen')
+                    arguments=['-topic', 'robot_description',
+                                '-entity', 'dbot_gz'],
+                    output='screen')
     ld.add_action(gazebo)
     ld.add_action(spawn_entity)
+
+    # Rviz
+    rviz_config_path = dbot_share_path / 'config/robot.rviz'
+    ld.add_action(
+        Node(
+            package='rviz2',
+            executable='rviz2',
+            name='rviz2',
+            output='screen',
+            arguments=['-d', str(rviz_config_path)],
+            parameters=[{'use_sim_time': True}]
+        )
+    )
 
     # Ros 2 Control
     ld.add_action(
