@@ -32,6 +32,11 @@ def generate_launch_description():
     moveit_config = MoveItConfigsBuilder("dbot", package_name="dbot_moveit_config").to_moveit_configs()
     ld = LaunchDescription()
 
+    # Use Sim Time
+    ld.add_action(
+        DeclareBooleanLaunchArg("use_sim_time", default_value=True)
+    )
+
     # Robot State Publisher
     # Given the published joint states, publish tf for the robot links and the robot description
     dbot_share_path = get_package_share_path('dbot')
@@ -43,7 +48,6 @@ def generate_launch_description():
     robot_description = ParameterValue(
         Command(['xacro ', LaunchConfiguration('dbot_urdf')]), value_type=str
     )
-    
     rsp_node = Node(
         package="robot_state_publisher",
         executable="robot_state_publisher",
@@ -53,7 +57,7 @@ def generate_launch_description():
             {
                 "robot_description" : robot_description,
                 "publish_frequency": 15.0,
-                "use_sim_time": True,
+                "use_sim_time": LaunchConfiguration('use_sim_time'),
             }
         ],
     )

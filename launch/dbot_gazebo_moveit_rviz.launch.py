@@ -32,6 +32,11 @@ def generate_launch_description():
     moveit_config = MoveItConfigsBuilder("dbot", package_name="dbot_moveit_config").to_moveit_configs()
     ld = LaunchDescription()
 
+    # Use Sim Time
+    ld.add_action(
+        DeclareBooleanLaunchArg("use_sim_time", default_value=True)
+    )
+
     # Robot State Publisher
     # Given the published joint states, publish tf for the robot links and the robot description
     dbot_share_path = get_package_share_path('dbot')
@@ -43,7 +48,6 @@ def generate_launch_description():
     robot_description = ParameterValue(
         Command(['xacro ', LaunchConfiguration('dbot_urdf')]), value_type=str
     )
-    
     rsp_node = Node(
         package="robot_state_publisher",
         executable="robot_state_publisher",
@@ -53,11 +57,33 @@ def generate_launch_description():
             {
                 "robot_description" : robot_description,
                 "publish_frequency": 15.0,
-                "use_sim_time": True,
+                "use_sim_time": LaunchConfiguration('use_sim_time'),
             }
         ],
     )
     ld.add_action(rsp_node)
+
+    # MoveGroup
+    ld.add_action(
+        IncludeLaunchDescription(
+            PythonLaunchDescriptionSource(
+                str(moveit_config.package_path / "launch/move_group.launch.py")
+            ),
+            launch_arguments={
+                "use_sim_time":LaunchConfiguration('use_sim_time'),
+            }.items(),
+        )
+    )
+
+    # Rviz
+    # Run Rviz and load the default config to see the state of the move_group node
+    ld.add_action(
+        IncludeLaunchDescription(
+            PythonLaunchDescriptionSource(
+                str(moveit_config.package_path / "launch/moveit_rviz.launch.py")
+            ),
+        )
+    )
 
     # Include the Gazebo launch file, provided by the gazebo_ros package
     # Run the spawner node from the gazebo_ros package. The entity name doesn't really matter if you only have a single robot.
@@ -71,15 +97,6 @@ def generate_launch_description():
                         output='screen')
     ld.add_action(gazebo)
     ld.add_action(spawn_entity)
-
-    # MoveGroup
-    ld.add_action(
-        IncludeLaunchDescription(
-            PythonLaunchDescriptionSource(
-                str(moveit_config.package_path / "launch/move_group.launch.py")
-            ),
-        )
-    )
 
     # Ros 2 Control
     ld.add_action(

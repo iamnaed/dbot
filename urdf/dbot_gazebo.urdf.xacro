@@ -8,4 +8,7 @@
     <!-- Import gazebo -->
     <xacro:include filename="dbot_gazebo_ros2_control.xacro" />
 
+    <!-- Import gazebo specific commands-->
+    <xacro:include filename="dbot_gazebo.xacro" />
+
 </robot>
