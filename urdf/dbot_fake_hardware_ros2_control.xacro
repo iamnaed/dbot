@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <ros2_control name="DbotFakeHardwareSystem" type="system">
+        <hardware>
+            <!-- By default, set up controllers for simulation. This won't work on real hardware -->
+            <plugin>dbot_fake_hardware/DbotFakeHardware</plugin> 
+        </hardware>
+        <joint name="j0_joint">
+            <command_interface name="position"/>
+            <state_interface name="position">
+            </state_interface>
+            <state_interface name="velocity"/>
+        </joint>
+        <joint name="j1_joint">
+            <command_interface name="position"/>
+            <state_interface name="position">
+            </state_interface>
+            <state_interface name="velocity"/>
+        </joint>
+        <joint name="j2_joint">
+            <command_interface name="position"/>
+            <state_interface name="position">
+            </state_interface>
+            <state_interface name="velocity"/>
+        </joint>
+        <joint name="j3_joint">
+            <command_interface name="position"/>
+            <state_interface name="position">
+            </state_interface>
+            <state_interface name="velocity"/>
+        </joint>
+        <joint name="j4_joint">
+            <command_interface name="position"/>
+            <state_interface name="position">
+            </state_interface>
+            <state_interface name="velocity"/>
+        </joint>
+        <joint name="j5_joint">
+            <command_interface name="position"/>
+            <state_interface name="position">
+            </state_interface>
+            <state_interface name="velocity"/>
+        </joint>
+    </ros2_control>
+</robot>
