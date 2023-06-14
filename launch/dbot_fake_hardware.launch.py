@@ -85,14 +85,12 @@ def generate_launch_description():
     )
 
     # Rviz
-    rviz_config_path = dbot_share_path / 'config/dbot_moveit.rviz'
+    # Run Rviz and load the default config to see the state of the move_group node
     ld.add_action(
-        Node(
-            package='rviz2',
-            executable='rviz2',
-            name='rviz2',
-            output='screen',
-            arguments=['-d', str(rviz_config_path)],
+        IncludeLaunchDescription(
+            PythonLaunchDescriptionSource(
+                str(moveit_config.package_path / "launch/moveit_rviz.launch.py")
+            ),
         )
     )
 
