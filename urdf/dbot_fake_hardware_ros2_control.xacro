@@ -7,39 +7,39 @@
         </hardware>
         <joint name="j0_joint">
             <command_interface name="position"/>
-            <state_interface name="position">
-            </state_interface>
+            <state_interface name="position"/>
             <state_interface name="velocity"/>
+            <state_interface name="acceleration"/>
         </joint>
         <joint name="j1_joint">
             <command_interface name="position"/>
-            <state_interface name="position">
-            </state_interface>
+            <state_interface name="position"/>
             <state_interface name="velocity"/>
+            <state_interface name="acceleration"/>
         </joint>
         <joint name="j2_joint">
             <command_interface name="position"/>
-            <state_interface name="position">
-            </state_interface>
+            <state_interface name="position"/>
             <state_interface name="velocity"/>
+            <state_interface name="acceleration"/>
         </joint>
         <joint name="j3_joint">
             <command_interface name="position"/>
-            <state_interface name="position">
-            </state_interface>
+            <state_interface name="position"/>
             <state_interface name="velocity"/>
+            <state_interface name="acceleration"/>
         </joint>
         <joint name="j4_joint">
             <command_interface name="position"/>
-            <state_interface name="position">
-            </state_interface>
+            <state_interface name="position"/>
             <state_interface name="velocity"/>
+            <state_interface name="acceleration"/>
         </joint>
         <joint name="j5_joint">
             <command_interface name="position"/>
-            <state_interface name="position">
-            </state_interface>
+            <state_interface name="position"/>
             <state_interface name="velocity"/>
+            <state_interface name="acceleration"/>
         </joint>
     </ros2_control>
 </robot>

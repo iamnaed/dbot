@@ -2,20 +2,14 @@ import os
 from ament_index_python.packages import get_package_share_directory
 from ament_index_python.packages import get_package_share_path
 from moveit_configs_utils import MoveItConfigsBuilder
-from moveit_configs_utils.launch_utils import (
-    add_debuggable_node,
-    DeclareBooleanLaunchArg,
-)
-
+from moveit_configs_utils.launch_utils import add_debuggable_node, DeclareBooleanLaunchArg
 from launch import LaunchDescription
-from launch.actions import (
-    DeclareLaunchArgument,
-    IncludeLaunchDescription,
-)
+from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
 from launch.conditions import IfCondition
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration, Command
-
+from launch.actions import DeclareLaunchArgument, RegisterEventHandler
+from launch.event_handlers import OnProcessExit
 from launch_ros.actions import Node
 from launch_ros.parameter_descriptions import ParameterValue
 
