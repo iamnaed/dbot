@@ -1,0 +1,17 @@
+[1] Since Odrive is implemented in Python, I need to make 
+    a Python package that runs the "odrive" module that can
+    be downloaded from their website.
+    Except, ros2_control's hardware interface can only be written in
+    c++, hence the problem.
+
+    Possible solutions:
+        [a] Make an python node that publishes the data from the Odrive
+            to a given topic. [eg. /odrive_pos, /odrive_vel]
+            Have the hardware interface, read from the topic.
+            [Might not work]
+
+        [2] Use odrive_hardware_interface in odrive_ros2_control from Factor Robotics
+            [This one is the simplest to implement]
+
+        [3] Write own, encoder and decoder of Odrives communication protocol
+            [Takes the most time, and probably the hardest]
