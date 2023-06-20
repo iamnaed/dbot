@@ -15,7 +15,7 @@ from launch_ros.parameter_descriptions import ParameterValue
 
 def generate_launch_description():
     # Initialize moveit_config
-    moveit_config = MoveItConfigsBuilder("dbot", package_name="dbot_moveit_config").to_moveit_configs()
+    moveit_config = MoveItConfigsBuilder("dbot_world", package_name="dbot_moveit_config").to_moveit_configs()
 
     # Declare arguments and nodes
     declared_arguments = []
@@ -110,7 +110,7 @@ def generate_launch_description():
     dbot_controller_spawner =   Node(
         package="controller_manager",
         executable="spawner",
-        arguments=["dbot_controller", "--controller-manager", "/controller_manager"],
+        arguments=["dbot_arm_controller", "--controller-manager", "/controller_manager"],
         output="screen",
     )
 

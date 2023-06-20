@@ -13,7 +13,7 @@ from launch_ros.parameter_descriptions import ParameterValue
 
 def generate_launch_description():
     my_robot_description_path = get_package_share_path('dbot')
-    default_model_path = my_robot_description_path / 'urdf/dbot.urdf.xacro'
+    default_model_path = my_robot_description_path / 'urdf/dbot_world.xacro'
     default_rviz_config_path = my_robot_description_path / 'config/robot.rviz'
 
     gui_arg = DeclareLaunchArgument(name='gui', default_value='true', choices=['true', 'false'],
@@ -25,17 +25,6 @@ def generate_launch_description():
 
     robot_description = ParameterValue(Command(['xacro ', LaunchConfiguration('model')]),
                                        value_type=str)
-
-    gazebo = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(([os.path.join(
-            get_package_share_directory('gazebo_ros'), 'launch'), '/gazebo.launch.py']),)
-    )
-
-    spawn_entity = Node(package='gazebo_ros', executable='spawn_entity.py',
-                    arguments=['-topic', 'robot_description',
-                                '-entity', 'my_bot'],
-                    output='screen')
-
 
     robot_state_publisher_node = Node(
         package='robot_state_publisher',
@@ -73,6 +62,4 @@ def generate_launch_description():
         joint_state_publisher_gui_node,
         robot_state_publisher_node,
         rviz_node,
-        #gazebo,
-        #spawn_entity
     ])

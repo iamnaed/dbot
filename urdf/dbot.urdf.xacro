@@ -358,4 +358,19 @@
             <origin xyz="${flange_xyz}" rpy="${flange_rpy}"/>
         </xacro:inertial_cylinder>
     </link>
+
+    <!-- Load Tcp data -->
+    <xacro:property name="tcp_file" value="$(find dbot)/config/tcp.yaml"/>
+    <xacro:property name="tcp" value="${xacro.load_yaml(tcp_file)['tcp']}"/>
+
+    <!-- Flange to tcp -->
+    <joint name="tcp_joint" type="fixed">
+        <origin xyz="${tcp['x']} ${tcp['y']} ${tcp['z']}" 
+                rpy="${tcp['roll']} ${tcp['pitch']} ${tcp['yaw']}"/>
+        <parent link="flange_link"/>
+        <child link="tcp_link"/>
+    </joint>
+
+    <!-- Tcp-->
+    <link name="tcp_link"/>
 </robot>

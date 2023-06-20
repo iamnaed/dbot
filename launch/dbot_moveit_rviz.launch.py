@@ -27,11 +27,9 @@ def generate_launch_description():
      * moveit_rviz
      * ros2_control_node + controller spawners
     """
-    moveit_config = MoveItConfigsBuilder("dbot", package_name="dbot_moveit_config").to_moveit_configs()
+    moveit_config = MoveItConfigsBuilder("dbot_world", package_name="dbot_moveit_config").to_moveit_configs()
     ld = LaunchDescription()
-    ld.add_action(
-        DeclareBooleanLaunchArg("use_rviz", default_value=True)
-    )
+
     # Given the published joint states, publish tf for the robot links
     ld.add_action(DeclareLaunchArgument("publish_frequency", default_value="60.0"))
 
@@ -79,7 +77,6 @@ def generate_launch_description():
             PythonLaunchDescriptionSource(
                 str(moveit_config.package_path / "launch/moveit_rviz.launch.py")
             ),
-            condition=IfCondition(LaunchConfiguration("use_rviz")),
         )
     )
 

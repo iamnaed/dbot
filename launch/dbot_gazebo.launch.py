@@ -29,7 +29,7 @@ def generate_launch_description():
      * moveit_rviz
      * ros2_control_node + controller spawners
     """
-    moveit_config = MoveItConfigsBuilder("dbot", package_name="dbot_moveit_config").to_moveit_configs()
+    moveit_config = MoveItConfigsBuilder("dbot_world", package_name="dbot_moveit_config").to_moveit_configs()
     ld = LaunchDescription()
 
     # Use Sim Time

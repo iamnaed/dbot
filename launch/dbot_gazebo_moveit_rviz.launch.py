@@ -29,7 +29,7 @@ def generate_launch_description():
      * moveit_rviz
      * ros2_control_node + controller spawners
     """
-    moveit_config = MoveItConfigsBuilder("dbot", package_name="dbot_moveit_config").to_moveit_configs()
+    moveit_config = MoveItConfigsBuilder("dbot_world", package_name="dbot_moveit_config").to_moveit_configs()
     ld = LaunchDescription()
 
     # Use Sim Time
@@ -103,7 +103,7 @@ def generate_launch_description():
         Node(
             package="controller_manager",
             executable="spawner",
-            arguments=["dbot_controller"],
+            arguments=["dbot_arm_controller"],
             output="screen",
         )
     )
