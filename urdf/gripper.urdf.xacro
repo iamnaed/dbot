@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="gripper">
+
+    <!-- Gripper properties -->
+    <!-- Base -->
+    <xacro:property name="gripper_base_l" value="0.300" />
+    <xacro:property name="gripper_base_w" value="0.050" />
+    <xacro:property name="gripper_base_h" value="0.050" />
+
+    <!-- Slider -->
+    <xacro:property name="slider_l" value="0.025" />
+    <xacro:property name="slider_w" value="0.050" />
+    <xacro:property name="slider_h" value="0.100" />
+
+    <!-- Gripper Kinematics -->
+    <xacro:property name="gripper_base_xyz" value="0.0 0.0 ${gripper_base_h/2}" />
+    <xacro:property name="gripper_base_rpy" value="0.0 0.0 0.0" />
+
+    <!-- Slider0 Kinematics -->
+    <xacro:property name="slider0_xyz" value="0.0 0.0 ${slider_h/2}"/>
+    <xacro:property name="slider0_rpy" value="0.0 0.0 0.0" />
+    <xacro:property name="slider0_joint_xyz" value="${(gripper_base_l/2) - (slider_l/2)} 0.0 ${gripper_base_h}" />
+    <xacro:property name="slider0_joint_rpy" value="0.0 0.0 0.0" />
+
+    <!-- Slider1 Kinematics -->
+    <xacro:property name="slider1_xyz" value="0.0 0.0 ${slider_h/2}" />
+    <xacro:property name="slider1_rpy" value="0.0 0.0 0.0"  />
+    <xacro:property name="slider1_joint_xyz" value="${-(gripper_base_l/2) + (slider_l/2)} 0.0 ${gripper_base_h}" />
+    <xacro:property name="slider1_joint_rpy" value="0.0 0.0 0.0"  />
+
+    <!-- Tcp Kinematics -->
+    <xacro:property name="tcp_xyz" value="0.0 0.0 ${gripper_base_h + slider_h/2}" />
+    <xacro:property name="tcp_rpy" value="0.0 0.0 0.0"  />
+
+    <!-- The first link of the gripper -->
+    <!-- Fixed base-->
+    <link name="gripper_base_link">
+        <visual>
+            <origin xyz="${gripper_base_xyz}" rpy="${gripper_base_rpy}"/>
+            <geometry>
+                <box size="${gripper_base_l} ${gripper_base_w} ${gripper_base_h}"/>
+            </geometry>
+            <material name="white"/>
+        </visual>
+        <collision>
+            <origin xyz="${gripper_base_xyz}" rpy="${gripper_base_rpy}"/>
+            <geometry>
+                <box size="${gripper_base_l} ${gripper_base_w} ${gripper_base_h}"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_box mass="0.5" x="${gripper_base_l}" y="${gripper_base_w}" z="${gripper_base_h}">
+            <origin xyz="${gripper_base_xyz}" rpy="${gripper_base_rpy}"/>
+        </xacro:inertial_box>
+    </link>
+
+    <!-- Base to slider0 -->
+    <joint name="slider0_joint" type="prismatic">
+        <origin xyz="${slider0_joint_xyz}" rpy="${slider0_joint_rpy}"/>
+        <parent link="gripper_base_link"/>
+        <child link="slider0_link"/>
+        <axis xyz="1 0 0"/>
+        <limit lower="${-gripper_base_l/2}" upper="0" velocity="100" effort="100"/>
+        <dynamics damping="${damping}" friction="${friction}" />
+    </joint>
+
+    <!-- The first slider-->
+    <link name="slider0_link">
+        <visual>
+            <origin xyz="${slider0_xyz}" rpy="${slider0_rpy}"/>
+            <geometry>
+                <box size="${slider_l} ${slider_w} ${slider_h}"/>
+            </geometry>
+            <material name="blue"/>
+        </visual>
+        <collision>
+            <origin xyz="${slider0_xyz}" rpy="${slider0_rpy}"/>
+            <geometry>
+                <box size="${slider_l} ${slider_w} ${slider_h}"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_box mass="0.1" x="${slider_l}" y="${slider_w}" z="${slider_h}">
+            <origin xyz="${slider0_xyz}" rpy="${slider0_rpy}"/>
+        </xacro:inertial_box>
+    </link>
+
+    <!-- Base to slider1 -->
+    <joint name="slider1_joint" type="prismatic">
+        <origin xyz="${slider1_joint_xyz}" rpy="${slider1_joint_rpy}"/>
+        <parent link="gripper_base_link"/>
+        <child link="slider1_link"/>
+        <axis xyz="1 0 0"/>
+        <limit lower="0" upper="${gripper_base_l/2}" velocity="100" effort="100"/>
+        <dynamics damping="${damping}" friction="${friction}" />
+    </joint>
+
+    <!-- The second slider-->
+    <link name="slider1_link">
+        <visual>
+            <origin xyz="${slider1_xyz}" rpy="${slider1_rpy}"/>
+            <geometry>
+                <box size="${slider_l} ${slider_w} ${slider_h}"/>
+            </geometry>
+            <material name="blue"/>
+        </visual>
+        <collision>
+            <origin xyz="${slider1_xyz}" rpy="${slider1_rpy}"/>
+            <geometry>
+                <box size="${slider_l} ${slider_w} ${slider_h}"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_box mass="0.1" x="${slider_l}" y="${slider_w}" z="${slider_h}">
+            <origin xyz="${slider1_xyz}" rpy="${slider1_rpy}"/>
+        </xacro:inertial_box>
+    </link>
+</robot>
