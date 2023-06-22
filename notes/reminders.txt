@@ -3,3 +3,7 @@
 
 [2] When using moveit_task_constructor, use the humble branch in github
     https://github.com/ros-planning/moveit_task_constructor.git -b humble
+
+[3] Install chomp planner
+    sudo apt install ros-humble-moveit-planners-chomp
+
