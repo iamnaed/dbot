@@ -15,3 +15,8 @@
 
         [3] Write own, encoder and decoder of Odrives communication protocol
             [Takes the most time, and probably the hardest]
+
+
+[2] When loading moveit with rviz, ompl's description is CHOMP. This might be a bug.
+    I need to investigate further.
+    [a] This might be becasue of the ompl settings file.
