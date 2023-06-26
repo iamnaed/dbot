@@ -20,3 +20,5 @@
 [2] When loading moveit with rviz, ompl's description is CHOMP. This might be a bug.
     I need to investigate further.
     [a] This might be becasue of the ompl settings file.
+
+[3] Odrive Hardware Interface needs to be completed.
