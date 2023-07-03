@@ -7,3 +7,5 @@
 [3] Install chomp planner
     sudo apt install ros-humble-moveit-planners-chomp
 
+[4] Install MoveIt Visual Tools
+    sudo apt install ros-humble-moveit-visual-tools
