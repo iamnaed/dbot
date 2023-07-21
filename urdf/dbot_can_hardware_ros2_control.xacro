@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <ros2_control name="DbotCanHardwareSystem" type="system">
+        <hardware>
+            <!-- By default, set up controllers for simulation. This won't work on real hardware -->
+            <plugin>dbot_can_hardware/DbotCanHardware</plugin>
+            <param name="can_name" value="vcan0"/>
+            <param name="can_id_j0" value="0x001"/>
+            <param name="can_id_j1" value="0x002"/>
+            <param name="can_id_j2" value="0x003"/>
+            <param name="can_id_j3" value="0x004"/>
+            <param name="can_id_j4" value="0x005"/>
+            <param name="can_id_j5" value="0x006"/>
+            <param name="redc_ratio_j0" value="48"/>
+            <param name="redc_ratio_j1" value="48"/>
+            <param name="redc_ratio_j2" value="48"/>
+            <param name="redc_ratio_j3" value="48"/>
+            <param name="redc_ratio_j4" value="48"/>
+            <param name="redc_ratio_j5" value="48"/>
+        </hardware>
+        <joint name="j0_joint">
+            <command_interface name="position"/>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+        </joint>
+        <joint name="j1_joint">
+            <command_interface name="position"/>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+        </joint>
+        <joint name="j2_joint">
+            <command_interface name="position"/>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+        </joint>
+        <joint name="j3_joint">
+            <command_interface name="position"/>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+        </joint>
+        <joint name="j4_joint">
+            <command_interface name="position"/>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+        </joint>
+        <joint name="j5_joint">
+            <command_interface name="position"/>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+        </joint>
+    </ros2_control>
+</robot>

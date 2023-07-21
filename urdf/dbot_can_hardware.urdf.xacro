@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="dbot_fake">
+
+    <!-- Import dbot urdf file -->
+    <!-- <xacro:include filename="dbot.urdf.xacro"/> -->
+    <xacro:include filename="dbot_world.xacro"/>
+
+    <!-- Import CAN hardware -->
+    <xacro:include filename="dbot_can_hardware_ros2_control.xacro" />
+
+</robot>
