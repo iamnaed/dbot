@@ -4,19 +4,19 @@
         <hardware>
             <!-- By default, set up controllers for simulation. This won't work on real hardware -->
             <plugin>dbot_can_hardware/DbotCanHardware</plugin>
-            <param name="can_name" value="vcan0"/>
-            <param name="can_id_j0" value="0x001"/>
-            <param name="can_id_j1" value="0x002"/>
-            <param name="can_id_j2" value="0x003"/>
-            <param name="can_id_j3" value="0x004"/>
-            <param name="can_id_j4" value="0x005"/>
-            <param name="can_id_j5" value="0x006"/>
-            <param name="redc_ratio_j0" value="48"/>
-            <param name="redc_ratio_j1" value="48"/>
-            <param name="redc_ratio_j2" value="48"/>
-            <param name="redc_ratio_j3" value="48"/>
-            <param name="redc_ratio_j4" value="48"/>
-            <param name="redc_ratio_j5" value="48"/>
+            <param name="can_name">vcan0</param>
+            <param name="can_id_j0">0x001</param>
+            <param name="can_id_j1">0x002</param>
+            <param name="can_id_j2">0x003</param>
+            <param name="can_id_j3">0x004</param>
+            <param name="can_id_j4">0x005</param>
+            <param name="can_id_j5">0x006</param>
+            <param name="redc_ratio_j0">48.0</param>
+            <param name="redc_ratio_j1">48.0</param>
+            <param name="redc_ratio_j2">48.0</param>
+            <param name="redc_ratio_j3">48.0</param>
+            <param name="redc_ratio_j4">48.0</param>
+            <param name="redc_ratio_j5">48.0</param>
         </hardware>
         <joint name="j0_joint">
             <command_interface name="position"/>
