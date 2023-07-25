@@ -5,12 +5,12 @@
             <!-- By default, set up controllers for simulation. This won't work on real hardware -->
             <plugin>dbot_can_hardware/DbotCanHardware</plugin>
             <param name="can_name">vcan0</param>
-            <param name="can_id_j0">0x001</param>
-            <param name="can_id_j1">0x002</param>
-            <param name="can_id_j2">0x003</param>
-            <param name="can_id_j3">0x004</param>
-            <param name="can_id_j4">0x005</param>
-            <param name="can_id_j5">0x006</param>
+            <param name="can_id_j0">1</param>
+            <param name="can_id_j1">2</param>
+            <param name="can_id_j2">3</param>
+            <param name="can_id_j3">4</param>
+            <param name="can_id_j4">5</param>
+            <param name="can_id_j5">6</param>
             <param name="redc_ratio_j0">48.0</param>
             <param name="redc_ratio_j1">48.0</param>
             <param name="redc_ratio_j2">48.0</param>
