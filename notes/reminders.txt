@@ -1,4 +1,5 @@
 [1] Add use_sim_time in the generate_move_group_launch() function in launches.py to support simulation in move_group node of moveit2.
+    See dbot/notes/launches.movegroup.py
     [/opt/ros/humble/lib/python3.10/site-packages/moveit_configs_utils/launches.py]
 
 [2] When using moveit_task_constructor, use the humble branch in github
