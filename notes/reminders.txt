@@ -12,3 +12,6 @@
     sudo apt install ros-humble-moveit-visual-tools
 
 [5] odrivetool generate-code -t ~/odrive_header_template.h.in -o ~/odrive_endpoints.h
+
+[6] Install MoveIt Servo
+    sudo apt install ros-humble-moveit-servo
