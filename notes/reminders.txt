@@ -15,3 +15,6 @@
 
 [6] Install MoveIt Servo
     sudo apt install ros-humble-moveit-servo
+
+[7] launches.move_group.py
+/opt/ros/humble/lib/python3.10/site-packages/moveit_configs_utils
