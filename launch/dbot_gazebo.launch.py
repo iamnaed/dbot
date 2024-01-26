@@ -81,7 +81,7 @@ def generate_launch_description():
         Node(
             package="controller_manager",
             executable="spawner",
-            arguments=["dbot_controller"],
+            arguments=["dbot_arm_controller"],
             output="screen",
         )
     )
