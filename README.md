@@ -1,1 +1,3 @@
-# dbot
+<img src="./image/dbot.jpg" alt="Alt text" title="DBOT">
+
+DBOT is a custom 6-axis robot, designed and built with 3D printed parts. This project aims to provide an open-source solution for enthusiasts and researchers interested in exploring the world of robotic manipulation. The robot is capable of performing intricate movements with its six degrees of freedom, making it versatile for various applications.

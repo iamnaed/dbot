@@ -20,16 +20,8 @@ from launch_ros.actions import Node
 from launch_ros.parameter_descriptions import ParameterValue
 
 def generate_launch_description():
-    """
-    Launches dbot with moveit
 
-    Includes
-     * robot_state_publisher
-     * move_group
-     * moveit_rviz
-     * ros2_control_node + controller spawners
-    """
-    moveit_config = MoveItConfigsBuilder("dbot_world", package_name="dbot_moveit_config").to_moveit_configs()
+    # Launch Description
     ld = LaunchDescription()
 
     # Use Sim Time
