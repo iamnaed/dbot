@@ -19,7 +19,7 @@
 [7] launches.move_group.py
 /opt/ros/humble/lib/python3.10/site-packages/moveit_configs_utils
 
-[8] To properly install IKFast Kinematic plugin, install python-is-python3 becasue when there is an error, generating 
-    the IKFast solver plugin will failed
+[8] To properly install IKFast Kinematic plugin, install python-is-python3. when there is an error, generating 
+    the IKFast solver plugin will fail
     
     sudo apt install python-is-python3
