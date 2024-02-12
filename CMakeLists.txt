@@ -8,6 +8,10 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(urdf REQUIRED)
+find_package(dbot_fake_hardware REQUIRED)
+find_package(dbot_can_hardware REQUIRED)
+find_package(dbot_servo REQUIRED)
+# find_package(dbot_moveit_config REQUIRED)
 
 # Install folders
 install(DIRECTORY
