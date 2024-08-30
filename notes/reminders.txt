@@ -23,3 +23,9 @@
     the IKFast solver plugin will fail
     
     sudo apt install python-is-python3
+
+[9] Install Gazeebo
+    sudo apt install ros-humble-gazebo-ros-pkgs
+
+[10] Install ROS2 Controllers
+    sudo apt install ros-humble-ros2-control ros-humble-ros2-controllers ros-humble-gazebo-ros2-control
