@@ -17,7 +17,7 @@
     sudo apt install ros-humble-moveit-servo
 
 [7] launches.move_group.py
-/opt/ros/humble/lib/python3.10/site-packages/moveit_configs_utils
+    /opt/ros/humble/lib/python3.10/site-packages/moveit_configs_utils
 
 [8] To properly install IKFast Kinematic plugin, install python-is-python3. when there is an error, generating 
     the IKFast solver plugin will fail
@@ -29,3 +29,9 @@
 
 [10] Install ROS2 Controllers
     sudo apt install ros-humble-ros2-control ros-humble-ros2-controllers ros-humble-gazebo-ros2-control
+
+[11] Install Joint State Publisher
+    sudo apt install ros-humble-joint-state-publisher ros-humble-joint-state-publisher-gui
+
+[12] Install rqt joint trajectory controllers
+    sudo apt install ros-humble-rqt ros-humble-rqt-common-plugins
