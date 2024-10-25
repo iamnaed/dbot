@@ -1,0 +1,329 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="dbot">
+    
+    <!-- Commmon data for the robot. -->
+    <xacro:include filename="robot_common.xacro"/>
+
+    <!-- Robot properties -->
+    <xacro:property name="base_org_l" value="0.091" />
+    <xacro:property name="base_j0_l" value="0.242" />
+    <xacro:property name="j0_j1_l" value="0.1075" />
+    <xacro:property name="j1_j2_l" value="0.350" />
+    <xacro:property name="j2_j3_ly" value="0.300" />
+    <xacro:property name="j2_j3_lz" value="0.1075" />
+    <xacro:property name="j3_j4_l" value="0.125" />
+    <xacro:property name="j4_j5_l" value="0.125" />
+    <xacro:property name="j5_flange_l" value="0.0565" />
+
+    <!-- Robot Kinematics -->
+    <xacro:property name="base_j0_xyz" value="0.0 0.0 ${base_j0_l}" />
+    <xacro:property name="base_j0_rpy" value="0.0 0.0 0.0" />
+
+    <xacro:property name="j0_j1_xyz" value="0.0 ${j0_j1_l} 0.0" />
+    <xacro:property name="j0_j1_rpy" value="${pi/2} 0.0 0.0" />
+
+    <xacro:property name="j1_j2_xyz" value="0.0 ${j1_j2_l} 0.0" />
+    <xacro:property name="j1_j2_rpy" value="0.0 0.0 0.0" />
+
+    <xacro:property name="j2_j3_xyz" value="0.0 ${j2_j3_ly} ${j2_j3_lz}" />
+    <xacro:property name="j2_j3_rpy" value="0.0 0.0 0.0" />
+
+    <xacro:property name="j3_j4_xyz" value="0.0 0.0 ${-j3_j4_l}" />
+    <xacro:property name="j3_j4_rpy" value="${-pi/2} 0.0 0.0" />
+
+    <xacro:property name="j4_j5_xyz" value="0.0 0.0 ${j4_j5_l}" />
+    <xacro:property name="j4_j5_rpy" value="${pi/2} 0.0 0.0" />
+
+    <xacro:property name="j5_flange_xyz" value="0.0 0.0 ${j5_flange_l}" />
+    <xacro:property name="j5_flange_rpy" value="0.0 0.0 0.0" />
+
+
+    <!-- Robot Dummy Models -->
+    <!-- Base -->
+    <xacro:property name="base_r" value="0.100" />
+    <xacro:property name="base_l" value="0.172" />
+    <xacro:property name="base_xyz" value="0.0 0.0 ${base_l/2}" />
+    <xacro:property name="base_rpy" value="0.0 0.0 0.0" />
+
+    <!-- Joint 0 -->
+    <xacro:property name="j0_r" value="0.060" />
+    <xacro:property name="j0_l" value="0.040" />
+    <xacro:property name="j0_xyz" value="0.0 0.0 ${(j0_l/2) + base_l - base_j0_l}" />
+    <xacro:property name="j0_rpy" value="0.0 0.0 0.0" />
+
+    <!-- Joint 1 -->
+    <xacro:property name="j1_r" value="0.045" />
+    <xacro:property name="j1_l" value="0.270" />
+    <xacro:property name="j1_xyz" value="0.0 0.0 0.0" />
+    <xacro:property name="j1_rpy" value="0.0 0.0 0.0" />
+    <xacro:property name="j1_link_r" value="0.045" />
+    <xacro:property name="j1_link_l" value="${j1_j2_l}" />
+    <xacro:property name="j1_link_xyz" value="0.0 ${j1_j2_l/2} 0.0" />
+    <xacro:property name="j1_link_rpy" value="${-pi/2} 0.0 0.0" />
+
+    <!-- Joint 2 -->
+    <xacro:property name="j2_r" value="0.045" />
+    <xacro:property name="j2_l" value="0.270" />
+    <xacro:property name="j2_xyz" value="0.0 0.0 0.0" />
+    <xacro:property name="j2_rpy" value="0.0 0.0 0.0" />
+    <xacro:property name="j2_link_r" value="0.045" />
+    <xacro:property name="j2_link_l" value="${j2_j3_ly}" />
+    <xacro:property name="j2_link_xyz" value="0.0 ${j2_j3_ly/2} ${j2_j3_lz}" />
+    <xacro:property name="j2_link_rpy" value="${-pi/2} 0.0 0.0" />
+
+    <!-- Joint 3 -->
+    <xacro:property name="j3_r" value="0.045" />
+    <xacro:property name="j3_l" value="0.290" />
+    <xacro:property name="j3_xyz" value="0.0 0.0 -0.01125" />
+    <xacro:property name="j3_rpy" value="0.0 0.0 0.0" />
+
+    <!-- Joint 4 -->
+    <xacro:property name="j4_r" value="0.045" />
+    <xacro:property name="j4_l" value="0.165" />
+    <xacro:property name="j4_xyz" value="0.0 0.0 0.0" />
+    <xacro:property name="j4_rpy" value="0.0 0.0 0.0" />
+
+    <!-- Joint 5 -->
+    <xacro:property name="j5_r" value="0.045" />
+    <xacro:property name="j5_l" value="0.165" />
+    <xacro:property name="j5_xyz" value="0.0 0.0 -0.035" />
+    <xacro:property name="j5_rpy" value="0.0 0.0 0.0" />
+
+    <!-- Flange -->
+    <xacro:property name="flange_r" value="0.030" />
+    <xacro:property name="flange_l" value="0.010" />
+    <xacro:property name="flange_xyz" value="0.0 0.0 ${-flange_l/2}" />
+    <xacro:property name="flange_rpy" value="0.0 0.0 0.0" />
+
+    <xacro:property name="damping" value="10.0" />
+    <xacro:property name="friction" value="10.0" />
+
+
+    <!-- The first link of the robot -->
+    <!-- Fixed base-->
+    <link name="base_link">
+        <visual>
+            <origin xyz="0 0 ${base_org_l}" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="file:///$(find dbot)/meshes/dbot_joint_0.dae" scale="1 1 1"/>
+            </geometry>
+            <material name="white"/>
+        </visual>
+        <collision>
+            <origin xyz="${base_xyz}" rpy="${base_rpy}"/>
+            <geometry>
+                <cylinder length="${base_l}" radius="${base_r}"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_cylinder mass="1.0" length="${base_l}" radius="${base_r}">
+            <origin xyz="${base_xyz}" rpy="${base_rpy}"/>
+        </xacro:inertial_cylinder>
+    </link>
+
+    <!-- Base to j0 -->
+    <joint name="j0_joint" type="revolute">
+        <origin xyz="${base_j0_xyz}" rpy="${base_j0_rpy}"/>
+        <parent link="base_link"/>
+        <child link="j0_link"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="${-pi}" upper="${pi}" velocity="100" effort="100"/>
+        <dynamics damping="${damping}" friction="${friction}" />
+    </joint>
+
+    <!-- The j0 link of the robot -->
+    <link name="j0_link">
+        <visual>
+            <origin xyz="0.0 0.0 ${-base_j0_l + base_org_l}" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="file:///$(find dbot)/meshes/dbot_joint_1.dae" scale="1 1 1"/>
+            </geometry>
+            <material name="white"/>
+        </visual>
+        <collision>
+            <origin xyz="${j0_xyz}" rpy="${j0_rpy}"/>
+            <geometry>
+                <cylinder length="${j0_l}" radius="${j0_r}"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_cylinder mass="1.0" length="${j0_l}" radius="${j0_r}">
+            <origin xyz="${j0_xyz}" rpy="${j0_rpy}"/>
+        </xacro:inertial_cylinder>
+    </link>
+
+    <!-- j0 to j1 Joint -->
+    <joint name="j1_joint" type="revolute">
+        <origin xyz="${j0_j1_xyz}" rpy="${j0_j1_rpy}"/>
+        <parent link="j0_link"/>
+        <child link="j1_link"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="${-pi}" upper="${pi}" velocity="100" effort="100"/>
+        <dynamics damping="${damping}" friction="${friction}" />
+    </joint>
+
+    <!-- The j1 link of the robot -->
+    <link name="j1_link">
+        <visual>
+            <origin xyz="0.0 ${-base_j0_l + base_org_l} ${j0_j1_l}" rpy="${-pi/2} 0 0"/>
+            <geometry>
+                <mesh filename="file:///$(find dbot)/meshes/dbot_joint_2.dae" scale="1 1 1"/>
+            </geometry>
+            <material name="white"/>
+        </visual>
+        <collision>
+            <origin xyz="${j1_xyz}" rpy="${j1_rpy}"/>
+            <geometry>
+                <cylinder length="${j1_l}" radius="${j1_r}"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_cylinder mass="1.0" length="${j1_l}" radius="${j1_r}">
+            <origin xyz="${j1_xyz}" rpy="${j1_rpy}"/>
+        </xacro:inertial_cylinder>
+    </link>
+
+    <!-- j1 to j2 Joint -->
+    <joint name="j2_joint" type="revolute">
+        <origin xyz="${j1_j2_xyz}" rpy="${j1_j2_rpy}"/>
+        <parent link="j1_link"/>
+        <child link="j2_link"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="${-pi}" upper="${pi}" velocity="100" effort="100"/>
+        <dynamics damping="${damping}" friction="${friction}" />
+    </joint>
+
+    <!-- The j2 link of the robot -->
+    <link name="j2_link">
+        <visual>
+            <origin xyz="0.0 ${-base_j0_l + base_org_l - j1_j2_l} ${j2_j3_lz}" rpy="${-pi/2} 0 0"/>
+            <geometry>
+                <mesh filename="file:///$(find dbot)/meshes/dbot_joint_3.dae" scale="1 1 1"/>
+            </geometry>
+            <material name="white"/>
+        </visual>
+        <collision>
+            <origin xyz="${j2_xyz}" rpy="${j2_rpy}"/>
+            <geometry>
+                <cylinder length="${j2_l}" radius="${j2_r}"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_cylinder mass="1.0" length="${j2_l}" radius="${j2_r}">
+            <origin xyz="${j2_xyz}" rpy="${j2_rpy}"/>
+        </xacro:inertial_cylinder>
+    </link>
+    
+    <!-- j2 to j3 Joint -->
+    <joint name="j3_joint" type="revolute">
+        <origin xyz="${j2_j3_xyz}" rpy="${j2_j3_rpy}"/>
+        <parent link="j2_link"/>
+        <child link="j3_link"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="${-pi}" upper="${pi}" velocity="100" effort="100"/>
+        <dynamics damping="${damping}" friction="${friction}" />
+    </joint>
+
+    <!-- The j3 link of the robot -->
+    <link name="j3_link">
+        <visual>
+            <origin xyz="0.0 ${-base_j0_l + base_org_l - j1_j2_l - j2_j3_ly} 0.0" rpy="${-pi/2} 0 0"/>
+            <geometry>
+                <mesh filename="file:///$(find dbot)/meshes/dbot_joint_4.dae" scale="1 1 1"/>
+            </geometry>
+            <material name="white"/>
+        </visual>
+        <collision>
+            <origin xyz="${j3_xyz}" rpy="${j3_rpy}"/>
+            <geometry>
+                <cylinder length="${j3_l}" radius="${j3_r}"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_cylinder mass="1.0" length="${j3_l}" radius="${j3_r}">
+            <origin xyz="${j3_xyz}" rpy="${j3_rpy}"/>
+        </xacro:inertial_cylinder>
+    </link>
+
+    <!-- j3 to j4 Joint -->
+    <joint name="j4_joint" type="revolute">
+        <origin xyz="${j3_j4_xyz}" rpy="${j3_j4_rpy}"/>
+        <parent link="j3_link"/>
+        <child link="j4_link"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="${-pi}" upper="${pi}" velocity="100" effort="100"/>
+        <dynamics damping="${damping}" friction="${friction}" />
+    </joint>
+
+    <!-- The j4 link of the robot -->
+    <link name="j4_link">
+        <visual>
+            <origin xyz="0.0 ${-j4_j5_l} ${-base_j0_l + base_org_l - j1_j2_l - j2_j3_ly}" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="file:///$(find dbot)/meshes/dbot_joint_5.dae" scale="1 1 1"/>
+            </geometry>
+            <material name="white"/>
+        </visual>
+        <collision>
+            <origin xyz="${j4_xyz}" rpy="${j4_rpy}"/>
+            <geometry>
+                <cylinder length="${j4_l}" radius="${j4_r}"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_cylinder mass="1.0" length="${j4_l}" radius="${j4_r}">
+            <origin xyz="${j4_xyz}" rpy="${j4_rpy}"/>
+        </xacro:inertial_cylinder>
+    </link>
+
+    <!-- j4 to j5 Joint -->
+    <joint name="j5_joint" type="revolute">
+        <origin xyz="${j4_j5_xyz}" rpy="${j4_j5_rpy}"/>
+        <parent link="j4_link"/>
+        <child link="j5_link"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="${-2*pi}" upper="${2*pi}" velocity="100" effort="100"/>
+        <dynamics damping="${damping}" friction="${friction}" />
+    </joint>
+
+    <!-- The j5 link of the robot -->
+    <link name="j5_link">
+    </link>
+
+    <!-- j5 to flange Joint -->
+    <joint name="flange_joint" type="fixed">
+        <origin xyz="${j5_flange_xyz}" rpy="${j5_flange_rpy}"/>
+        <parent link="j5_link"/>
+        <child link="flange_link"/>
+        <dynamics damping="${damping}" friction="${friction}" />
+    </joint>
+
+    <!-- The Flange link of the robot -->
+    <link name="flange_link">
+        <visual>
+            <origin xyz="${flange_xyz}" rpy="${flange_rpy}"/>
+            <geometry>
+                <cylinder length="${flange_l}" radius="${flange_r}"/>
+            </geometry>
+            <material name="white"/>
+        </visual>
+        <collision>
+            <origin xyz="${flange_xyz}" rpy="${flange_rpy}"/>
+            <geometry>
+                <cylinder length="${flange_l}" radius="${flange_r}"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_cylinder mass="1.0" length="${flange_l}" radius="${flange_r}">
+            <origin xyz="${flange_xyz}" rpy="${flange_rpy}"/>
+        </xacro:inertial_cylinder>
+    </link>
+
+    <!-- Load Tcp data -->
+    <xacro:property name="tcp_file" value="$(find dbot)/config/tcp.yaml"/>
+    <xacro:property name="tcp" value="${xacro.load_yaml(tcp_file)['tcp']}"/>
+
+    <!-- Flange to tcp -->
+    <joint name="tcp_joint" type="fixed">
+        <origin xyz="${tcp['x']} ${tcp['y']} ${tcp['z']}" 
+                rpy="${tcp['roll']} ${tcp['pitch']} ${tcp['yaw']}"/>
+        <parent link="flange_link"/>
+        <child link="tcp_link"/>
+    </joint>
+
+    <!-- Tcp-->
+    <link name="tcp_link"/>
+</robot>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="dbot_world">
+    
+    <!-- World Frame-->
+    <!-- Fixed base-->
+    <link name="world"/>
+
+    <!-- World to robot base joint -->
+    <joint name="world_base_joint" type="fixed">
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        <parent link="world"/>
+        <child link="base_link"/>
+    </joint>
+
+    <!-- Dbot robot urdf -->
+    <xacro:include filename="dbot_test.urdf.xacro"/>
+</robot>
