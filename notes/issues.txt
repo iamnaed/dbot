@@ -1,0 +1,14 @@
+[1] There is an issue in the Pilz Industrial Motion Controller
+    where the last two points in the generated trajectory will have the same
+    time_from_start and thus erroring out when executing the trajectory
+    due to "time not strictly increasing" error
+    It might be because of an uneven sample time in the final part of the trajectory
+
+    Example
+    trajectory      ----|----|----|----|-
+    sample time     .04 |.04 |.04 |.04 |.01
+
+    It is related to this github issue
+    https://github.com/moveit/moveit/issues/3583
+    and
+    https://github.com/moveit/moveit/issues/3553
