@@ -224,9 +224,14 @@ def generate_move_group_launch(moveit_config):
         "use_sim_time" : LaunchConfiguration("use_sim_time"),
     }
 
+    move_group_capabilities = {
+        "capabilities": "pilz_industrial_motion_planner/MoveGroupSequenceAction pilz_industrial_motion_planner/MoveGroupSequenceService"
+    }
+
     move_group_params = [
         moveit_config.to_dict(),
         move_group_configuration,
+        move_group_capabilities
     ]
 
     add_debuggable_node(

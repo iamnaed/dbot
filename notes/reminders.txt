@@ -35,3 +35,6 @@
 
 [12] Install rqt joint trajectory controllers
     sudo apt install ros-humble-rqt ros-humble-rqt-common-plugins
+
+[13] Example PILZ launche
+    https://github.com/moveit/moveit2_tutorials/blob/main/doc/how_to_guides/pilz_industrial_motion_planner/launch/pilz_moveit.launch.py
