@@ -133,7 +133,7 @@ def generate_launch_description():
 
     # Moveit Servo
     # Get parameters for the Servo node
-    servo_yaml = load_yaml("dbot", "config/dbot_moveit_servo_config.yaml")
+    servo_yaml = load_yaml("dbot_servo", "config/dbot_moveit_servo_config.yaml")
     servo_params = {"moveit_servo": servo_yaml}
     servo_node = Node(
         package="moveit_servo",
